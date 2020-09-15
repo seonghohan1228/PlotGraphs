@@ -95,7 +95,7 @@ block1_values
     Column 7: DUMMY (Data header sign)
     Column 8: FRM_ID (???)
     Column 9: FRM_LEN (???)
-    Column 10: TIME (Time information)
+*    Column 10: TIME (Time information)
     Column 11: SUB_SEC (Subsecond, unit 1/128 sec)
     Column 12: DCB_ID (Subunit ID)
 *    Column 13-76: DT0_CH00 ~ DT0_CH63 (Detector 0, channel 0 ~ 63)
@@ -126,22 +126,22 @@ block1_values
     Column 4: DT (Subunit ID)
     Column 5: PC1 (Packet count (Inc. (begin with 0)))
     Column 6: LENGTH (Remained byte size)
-    Column 7: TIME_x (Time information)
+*    Column 7: TIME_x (Time information)
     Column 8: SUB_SEC (Subsecond, unit 50 ns)
-    Column 9-49: S0_00 ~ S0_40
-    Column 50-90: S1_00 ~ S1_40
-    Column 91-131: S2_00 ~ S2_40
+*    Column 9-49: S0_00 ~ S0_40 (Telescope 0, channel 0 ~ 40)
+*    Column 50-90: S1_00 ~ S1_40 (Telescope 1, channel 0 ~ 40)
+*    Column 91-131: S2_00 ~ S2_40 (Telescope 2, channel 0 ~ 40)
     Column 132-134: VM_A, B, C (Volrage monitoring of HV-A, B, C)
     Column 135-138: TEMP_HV_A, HV_B, HV_C, HEPD (Temperature monitoring of HV-A, B, C, HEPD control board)
     Column 139: CS_GS_SAT (Checksum)
 
 block2_values (Same as MEPD_SCI)
     block2_values
-*    Column 0-3: TAMp_0 ~ TAMp_3 -> Magnetic field
-*    Column 4-7: TAMr_0 ~ TAMr_3 -> Magnetic field
+    Column 0-3: TAMp_0 ~ TAMp_3 -> Magnetic field
+    Column 4-7: TAMr_0 ~ TAMr_3 -> Magnetic field
     Column 8-11: GRA_X, GRA_Y, GRA_Z, GRA_SKEW -> ???
     Column 12-15: QUAT_X, QUAT_Y, QUAT_Z, QUAT_W -> ???
-*    Column 16-17: LATT, LONG -> Position of satellite
+    Column 16-17: LATT, LONG -> Position of satellite
     Column 18: HEIGHT -> ???
     Column 19-21: POS_0 ~ POS_2 -> ???
 
