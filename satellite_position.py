@@ -1,21 +1,17 @@
-from mpl_toolkits.basemap import Basemap
-import matplotlib
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+import pandas as pd
 import numpy as np
 import h5py
 
-with h5py.File('MEPD_SCI_20200717_0851_ORB_08795.h5', 'r') as hdf:
+with h5py.File('./data/MEPD_SCI_20200717_0851_ORB_08795.h5', 'r') as hdf:
     data = np.array(hdf['/MEPD_SCI/block2_values'])
 
 latitude = data[:, 16]
 longitude = data[:, 17]
 
-m = Basemap(projection='polar')
-m.drawcoastlines()
-m.drawmeridians(np.arange(0,360,45))
-m.drawparallels(np.arange(-90,90,30))
+fig = go.Figure(data=go.Scattergeo(lon = longitude, lat = latitude, mode = 'markers'))
 
-x, y = m(longitude, latitude)
-m.plot(x, y, 'r')
+fig.update_geos(projection_type="orthographic", landcolor='white', lataxis_showgrid=True, lonaxis_showgrid=True)
+fig.update_layout(title = 'Satellite Position')
 
-plt.show()
+fig.show()
