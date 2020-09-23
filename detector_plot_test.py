@@ -7,6 +7,7 @@ from detector import detector
 from telescope import telescope
 from get_time import get_time
 from new_cmap import new_cmap
+from average_data import average_data
 
 # Defined for testing purposes 
 FOLDERNAME = './data/'
@@ -19,15 +20,21 @@ data = read_hdf(FOLDERNAME + FILENAME, GROUP, DATASET)
 date_time = get_time(data)
 detector_data = detector(data)
 
+# Average
+for i in range(NPLOTS):
+    detector_data[i] = average_data(detector_data[i])
+
 # Plot
 fig, axes = plt.subplots(nrows=NPLOTS, ncols=1, figsize=(8, 6))
 gs1 = matplotlib.gridspec.GridSpec(NPLOTS, 1)
 gs1.update(wspace=0.025, hspace=0.05)
 
-xmin, xmax = matplotlib.dates.date2num(date_time[0]), matplotlib.dates.date2num(date_time[-1])
+xmin = matplotlib.dates.date2num(date_time[0])
+xmax = matplotlib.dates.date2num(date_time[-1])
+
 for i in range(4):
     axes[i].xaxis.set_visible(False)
-    im = axes[i].imshow(np.transpose(detector_data[i]), extent=[xmin, xmax, 0, 64], origin='lower', cmap=new_cmap(), aspect='auto', vmax=13)
+    im = axes[i].imshow(np.transpose(detector_data[i]), origin='lower', cmap=new_cmap(), aspect='auto', vmax=13)
 
 plt.subplots_adjust(left=0.05, right=0.9, bottom=0.05, top=0.95, wspace=0.2, hspace=0)
 cb_ax = fig.add_axes([0.92, 0.05, 0.02, 0.9])
@@ -39,6 +46,5 @@ plt.gca().xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%H:%M'))
 
 plt.xlabel('UT')
 axes[3].xaxis.set_label_coords(-0.5, -0.5)
-
+plt.savefig('detector_plot_3_average_skip.png', dpi=600)
 plt.show()
-
