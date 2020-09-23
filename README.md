@@ -1,6 +1,8 @@
 Create a folder named 'data' and put the HDF5 data files in there.
 
 In the terminal type:
+sudo apt-get install python3-pip
+sudo apt-get install python3-virtualenv
 virtualenv venv
 source venv/bin/activate
 
