@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 import h5py
 
-with h5py.File('./data/MEPD_SCI_20200717_0851_ORB_08795.h5', 'r') as hdf:
-    data = np.array(hdf['/MEPD_SCI/block2_values'])
+with h5py.File('./data/HEPD_DIV_20200717_0850_ORB_08795.h5', 'r') as hdf:
+    data = np.array(hdf['/HEPD_DIV/block2_values'])
 
 latitude = data[:, 16]
 longitude = data[:, 17]

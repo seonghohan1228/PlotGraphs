@@ -10,7 +10,7 @@ from new_cmap import new_cmap
 
 # Defined for testing purposes 
 FOLDERNAME = './data/'
-FILENAME = 'HEPD_DIV_20200713_1142_ORB_08737.h5'
+FILENAME = 'HEPD_DIV_20200717_0850_ORB_08795.h5'
 GROUP = 'HEPD_DIV'
 DATASET = 'block1_values'
 NPLOTS = 3
